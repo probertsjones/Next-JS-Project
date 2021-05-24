@@ -3,7 +3,7 @@ title: FAQ
 description: "Frequently Asked Questions"
 ---
 
-## Title one
+# Title one
 
 [link text here](https://www.google.com)
 
@@ -14,6 +14,6 @@ Some text
  - Bullet one
  - Bullet two
 
-## Anything else?
+### Anything else?
 
 Don't think so for now

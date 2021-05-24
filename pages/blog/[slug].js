@@ -4,8 +4,8 @@ import path from 'path';
 import matter from 'gray-matter';
 import Head from 'next/head';
 import Nav from '../Nav';
+import Footer from '../Footer';
 import marked from 'marked';
-import 'bootstrap/dist/css/bootstrap.css';
 
 const Post = ({ htmlString, data }) => {
     return (
@@ -18,6 +18,7 @@ const Post = ({ htmlString, data }) => {
             <div className="container mt-4">
                 <div dangerouslySetInnerHTML={{ __html: htmlString }}></div>
             </div>
+            <Footer />
         </>
     );
 };
