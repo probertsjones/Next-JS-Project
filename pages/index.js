@@ -13,6 +13,8 @@ const Home = ({ slugs }) => {
       <Nav />
       <Head>
         <title>Test Site</title>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#90cdf4" />
       </Head>
       <main className={styles.container}>
 
