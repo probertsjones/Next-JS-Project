@@ -1,12 +1,14 @@
 import Head from 'next/head';
 import Nav from './Nav';
 import path from 'path';
+import matter from 'gray-matter';
 import styles from '../styles/Home.module.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Link from "next/link";
 import fs from 'fs';
 
 const Home = ({ slugs }) => {
+  // console.log("slugs: ",slugs);
   return (
     <main className={styles.container}>
 
@@ -21,12 +23,13 @@ const Home = ({ slugs }) => {
             <ul>
             {slugs.map(slug => {
               return (
-                <li key={slug}>
-                  <Link href={'/blog/' + slug}>
+                <li key={slug.slug}>
+                  <Link href={'/blog/' + slug.slug}>
                     <a className="text-white fw-bold">
-                      {'/blog/' + slug}
+                      {slug.title}
                     </a>
-                  </Link>
+                  </Link><br />
+                    {slug.description}
                 </li>
               )
             })}
@@ -42,17 +45,24 @@ const Home = ({ slugs }) => {
 export const getStaticProps = async () => {
 
   const files = fs.readdirSync('posts');
+  const outputArray = [];
 
-  // const markdownWithMetaData = fs.readFileSync(path.join('posts',slug+'.md')).toString();
-  // const prasedMarkdown = matter(markdownWithMetaData);
-  // const htmlString = marked(prasedMarkdown.content);
+  // Loop around files and get the meta data
+  {files.map(file => {
+    const markdownWithMetaData = fs.readFileSync(path.join('posts',file)).toString();
+    const prasedMarkdown = matter(markdownWithMetaData);
+    const outputContent = [];
 
-  
-  console.log("files: ",files);
+    prasedMarkdown.data.slug = file.replace(".md", "");
+    outputArray.push(prasedMarkdown.data);
+  })}
+
+  // console.log("files: ",files);
+  // console.log("outputArray: ",outputArray);
 
   return {
     props: {
-      slugs: files.map(filename => filename.replace(".md", ""))
+      slugs: outputArray
     }
   }
 };

@@ -1,6 +1,6 @@
 ---
 title: First tset
-descrtiption: something
+description: something
 ---
 
 ## test!
