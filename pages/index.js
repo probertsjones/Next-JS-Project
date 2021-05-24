@@ -1,13 +1,19 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import 'bootstrap/dist/css/bootstrap.css'
+import Head from 'next/head';
+import Nav from './Nav';
+import styles from '../styles/Home.module.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import Link from "next/link";
 import fs from 'fs';
 
 const Home = ({slugs}) => {
   return (
-    <div className={styles.container}>
-      <Head></Head>
+    <main className={styles.container}>
+
+      <Nav />
+      <Head>
+        <title>Test Site</title>
+      </Head>
+      <div className="container">
       slugs:
       {slugs.map(slug => {
         return (
@@ -20,7 +26,8 @@ const Home = ({slugs}) => {
           </div>
         )
       })}
-    </div>
+      </div>
+    </main>
   )
 };
 

@@ -3,16 +3,21 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import Head from 'next/head';
+import Nav from '../Nav';
 import marked from 'marked';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const Post = ({htmlString, data}) => {
     return (
         <>
+        <Nav />
         <Head>
             <title>{data.title}</title>
             <meta type="description" content={data.description} />
         </Head>
+      <div className="container">
         <div dangerouslySetInnerHTML={{__html:htmlString}}></div>
+        </div>
         </>
     );
 };
